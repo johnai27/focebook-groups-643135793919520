@@ -91,7 +91,7 @@ export default function LoginForm() {
             type="button"
             className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg inline-block mx-auto transition-colors"
           >
-            Create new FAcebook account
+            Create new Facebook account
           </button>
         </div>
 
@@ -113,7 +113,7 @@ export default function LoginForm() {
           <a href="#" className="hover:underline">Privacy</a> · 
           <a href="#" className="hover:underline">Cookies</a>
         </p>
-        <p className="text-gray-500">© 2025 focebook. All rights reserved.</p>
+        <p className="text-gray-500">© 2025 facebook. All rights reserved.</p>
       </div>
     </div>
   )
