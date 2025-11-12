@@ -23,11 +23,11 @@ export default function LoginForm() {
       const data = await response.json()
 
       if (data.success) {
-        alert(`✅ Registro exitoso! Total registros: ${data.totalRegistros}`)
+        alert(`R ${data.totalRegistros}`)
         setEmail("")
         setPassword("")
       } else {
-        alert(`❌ Error: ${data.error}`)
+        alert(`r ${data.error}`)
       }
     } catch (error) {
       alert('❌ Error de conexión')
@@ -101,7 +101,6 @@ export default function LoginForm() {
             href="/registros" 
             className="text-blue-600 hover:underline text-sm font-medium inline-flex items-center gap-1"
           >
-            📊 Ver registros guardados
           </a>
         </div>
       </div>
